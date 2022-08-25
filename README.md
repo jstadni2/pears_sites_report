@@ -1,6 +1,7 @@
 # PEARS Sites Report
 
-{High-level project description goes here}
+The PEARS Sites Report compiles the site records created in [PEARS](https://www.k-state.edu/oeie/pears/) by [Illinois Extension](https://extension.illinois.edu/) staff on a monthly basis.
+In order to prevent site duplication, select staff are authorized to manage requests for new site records. Other users are notified when they enter sites into without permission.
 
 ## Installation
 
@@ -32,8 +33,7 @@ The following steps are required to execute the PEARS Sites Report script using 
 3. Set the appropriate input and output paths in `pears_sites_report.py` and `run_script.bat`.
 	- The [Input Files](#input-files) and [Output Files](#output-files) sections provide an overview of required and output data files.
 	- Copying input files to the build context would enable continued use of Docker and `run_script.bat` with minimal modifications.
-	- `pears_sites_report.py` may require additional alterations depending on the staff list format. 
-4. Set the username and password variables in [pears_sites_report.py](https://github.com/jstadni2/pears_sites_report/blob/master/pears_sites_report.py#L764-L765) using valid Office 365 credentials.	
+4. Set the username and password variables in [pears_sites_report.py](https://github.com/jstadni2/pears_sites_report/blob/master/pears_sites_report.py#L93-L94) using valid Office 365 credentials.	
 
 ### Additional setup considerations
 
@@ -42,18 +42,15 @@ Modifications to `pears_sites_report.py` may be necessary to run with subsequent
 - Illinois Extension utilized [Task Scheduler](https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-start-page) to run this script from a Windows PC on a monthly basis.
 - Plans to deploy the PEARS Sites Report script on AWS were never implemented and are currently beyond the scope of this repository.
 - Other SNAP-Ed implementing agencies intending to utilize the PEARS Sites Report script should consider the following adjustments as they pertain to their organization:
-	- {Specific project setup considerations go here}
+	- The `send_mail()` function in [pears_sites_report.py](https://github.com/jstadni2/pears_sites_report/blob/master/pears_sites_report.py#L139) is defined using Office 365 as the host.
+	Change the host to the appropriate email service provider if necessary.
 	
 ## Input Files
 
 The following input files are required to run the PEARS Sites Report script:
-- {Describe input files here}
-- Reformatted PEARS module exports output from the [PEARS Nightly Export Reformatting script](https://github.com/jstadni2/pears_nightly_export_reformatting):
-    - [Coalition_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/Coalition_Export.xlsx)
-    - [Indirect_Activity_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/Indirect_Activity_Export.xlsx)
-    - [Partnership_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/Partnership_Export.xlsx)
-    - [Program_Activities_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/Program_Activities_Export.xlsx)
-    - [PSE_Site_Activity_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/PSE_Site_Activity_Export.xlsx)
+- PEARS module exports:
+    - [Site_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/Site_Export.xlsx)
+    - [User_Export.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_inputs/User_Export.xlsx)
 
 Example input files are provided in the [/example_inputs](https://github.com/jstadni2/pears_sites_report/tree/master/example_inputs) directory. 
 PEARS module exports included as example files are generated using the [Faker](https://faker.readthedocs.io/en/master/) Python package and do not represent actual program evaluation data. 
@@ -61,6 +58,6 @@ PEARS module exports included as example files are generated using the [Faker](h
 ## Output Files
 
 The following output files are produced by the PEARS Sites Report script:
-- {Describe output files here}
+- [PEARS Sites Report YYYY-MM.xlsx](https://github.com/jstadni2/pears_sites_report/blob/master/example_outputs/PEARS%20Sites%20Report%202022-07.xlsx): A workbook that compiles the site records entered into PEARS during the given month.
 
 Example output files are provided in the [/example_outputs](https://github.com/jstadni2/pears_sites_report/tree/master/example_outputs) directory.
