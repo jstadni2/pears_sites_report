@@ -1,7 +1,7 @@
 # PEARS Sites Report
 
 The PEARS Sites Report compiles the site records created in [PEARS](https://www.k-state.edu/oeie/pears/) by [Illinois Extension](https://extension.illinois.edu/) staff on a monthly basis.
-In order to prevent site duplication, select staff are authorized to manage requests for new site records. Other users are notified when they enter sites into without permission.
+In order to prevent site duplication, select staff are authorized to manage requests for new site records. Other users are notified when they enter sites into PEARS without permission.
 
 ## Installation
 
